@@ -1,0 +1,2 @@
+# zavodsvay
+Static site generator
