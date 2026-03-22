@@ -1,0 +1,10 @@
+{
+  "title": "Статьи",
+  "items": [
+    { "label": "Технология производства", "url": "/articles/texnologiya/" },
+    { "label": "Винтовые сваи", "url": "/articles/vintovye-svai/" },
+    { "label": "Фундамент на сваях", "url": "/articles/fundament-na-svayah/" },
+    { "label": "Монтаж свай", "url": "/articles/montazh-svay/" },
+    { "label": "Сваи для забора", "url": "/articles/svai-dlya-zabora/" }
+  ]
+}

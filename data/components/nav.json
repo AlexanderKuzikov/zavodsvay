@@ -1,0 +1,11 @@
+{
+  "items": [
+    { "label": "Каталог свай", "url": "/catalog/" },
+    { "label": "Цены", "url": "/prices/" },
+    { "label": "Техническая документация", "url": "/document/" },
+    { "label": "Услуги монтажа", "url": "/montage/" },
+    { "label": "Карта работ", "url": "/map/" },
+    { "label": "Для новичков", "url": "/articles/" },
+    { "label": "Контакты", "url": "/contacts/" }
+  ]
+}

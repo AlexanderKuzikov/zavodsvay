@@ -1,0 +1,11 @@
+{
+  "phone": {
+    "label": "+7 (342) 000-00-00",
+    "href": "+73420000000"
+  },
+  "email": "info@zavodsvay.ru",
+  "address": "г. Пермь, ул. Примерная, 1",
+  "telegram": { "url": "https://t.me/zavodsvay" },
+  "whatsapp": { "url": "https://wa.me/73420000000" },
+  "vk": { "url": "https://vk.com/zavodsvay" }
+}

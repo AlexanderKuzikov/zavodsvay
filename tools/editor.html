@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактор контента</title>
+    <script src="tinymce/tinymce.min.js"></script>
+    <script>
+    tinymce.init({
+        selector: '#editor',
+        language: 'ru',
+        plugins: 'lists link image table code',
+        toolbar: 'undo redo | blocks | bold italic | bullist numlist | link image table | code',
+        block_formats: 'Параграф=p; Заголовок 1=h1; Заголовок 2=h2; Заголовок 3=h3',
+        content_css: '../assets/css/template.css',
+        body_class: 'content-area',
+        width: '100%',
+        height: 600,
+        menubar: false
+    });
+
+    function copyHTML() {
+        const html = tinymce.activeEditor.getContent();
+        navigator.clipboard.writeText(html);
+        document.getElementById('status').textContent = 'Скопировано!';
+        setTimeout(() => document.getElementById('status').textContent = '', 2000);
+    }
+
+    function loadFile() {
+        const input = document.getElementById('fileInput');
+        const file = input.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = e => tinymce.activeEditor.setContent(e.target.result);
+        reader.readAsText(file);
+    }
+    </script>
+</head>
+<body>
+    <div style="max-width:1200px; margin:0 auto; padding:20px;">
+        <div style="margin-bottom:10px; display:flex; gap:10px; align-items:center;">
+            <button onclick="copyHTML()">Скопировать HTML</button>
+            <span id="status" style="color:green; font-size:0.9em;"></span>
+            <input type="file" id="fileInput" accept=".html" onchange="loadFile()" style="margin-left:auto;">
+        </div>
+        <textarea id="editor"></textarea>
+    </div>
+</body>
+</html>
