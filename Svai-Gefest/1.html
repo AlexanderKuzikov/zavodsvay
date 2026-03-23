@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница - Завод винтовых свай "Гефест"</title>
+    <link rel="stylesheet" href="template.css">
+    <style>
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            z-index: 9999;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+            pointer-events: auto;
+            user-select: none;
+        }
+        #splash-screen .background-picture,
+        #splash-screen .background-picture img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
+            user-select: none;
+            -webkit-user-drag: none;
+            filter: brightness(0.5);
+        }
+        #splash-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        #splash-screen .logo {
+            max-width: 20vw;
+            height: auto;
+            margin-bottom: 2vh;
+            z-index: 1;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+        #splash-screen .company-name-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1vh;
+            z-index: 1;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        #splash-screen .company-name-part1 {
+            font-size: 3.5vw;
+            font-weight: 800;
+            margin: 0;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+            font-family: 'RobotoSlabLocal', serif;
+        }
+        #splash-screen .company-name-part2 {
+            font-size: 8vw;
+            font-weight: 800;
+            margin: 0;
+            margin-top: 0.5vh;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+            font-family: 'RobotoSlabLocal', serif;
+        }
+        #splash-screen .slogan {
+            font-size: 4vw;
+            font-weight: 400;
+            margin-top: 3vh;
+            z-index: 1;
+            line-height: 1.4;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+            padding: 0 10px;
+            text-wrap: balance;
+            -webkit-text-wrap: balance;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+            font-family: 'RobotoSlabLocal', serif;
+        }
+        @media (min-width: 1200px) {
+            #splash-screen .logo {
+                max-width: 200px;
+            }
+            #splash-screen .company-name-part1 {
+                font-size: 42px;
+            }
+            #splash-screen .company-name-part2 {
+                font-size: 96px;
+            }
+            #splash-screen .slogan {
+                font-size: 48px;
+                margin-top: 30px;
+            }
+        }
+        @media (max-width: 480px) {
+            #splash-screen .logo {
+                max-width: 40vw;
+            }
+            #splash-screen .company-name-part1 {
+                font-size: 5vw;
+            }
+            #splash-screen .company-name-part2 {
+                font-size: 10vw;
+            }
+            #splash-screen .slogan {
+                font-size: 6vw;
+                margin-top: 2vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content-wrapper">
+            <div class="header-logo">
+                <img src="img/logocircletrans180.webp" alt="Логотип Завода винтовых свай Гефест">
+                <span>Завод винтовых свай</span>
+            </div>
+            <button class="hamburger-menu-toggle" aria-label="Toggle menu">
+                <span class="hamburger-icon"></span>
+                <span class="hamburger-icon"></span>
+                <span class="hamburger-icon"></span>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="#">Каталог свай</a></li>
+                    <li><a href="#">Цены</a></li>
+                    <li><a href="#">Техническая документация</a></li>
+                    <li><a href="#">Услуги монтажа</a></li>
+                    <li><a href="#">Карта работ</a></li>
+                    <li><a href="#">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="main-layout-container">
+        <aside class="sidebar">
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+              <symbol id="icon-phone" aria-label="Phone" role="img" viewBox="0 0 512 512">
+                <rect width="512" height="512" rx="15%" fill="#999999"/>
+                <path fill="#ffffff" d="m 310,120 c 15,0 27,12 27,27 v 217 c 0,15 -12,27 -27,27 H 202 c -15,0 -27,-12 -27,-27 V 147 c 0,-15 12,-27 27,-27 z M 202,93 c -30,0 -54,24 -54,54 v 217 c 0,30 24,54 54,54 h 108 c 30,0 54,-24 54,-54 V 147 c 0,-30 -24,-54 -54,-54 z m 54,271 c 15,0 27,-12 27,-27 0,-15 -12,-27 -27,-27 -15,0 -27,12 -27,27 0,15 12,27 27,27 z M 82,149 c 0,0 11,5 5,18 -14,27 -22,58 -22,88 0,32 8,62 22,89 5,11 -5,20 -12,20 -5,0 -10,-3 -12,-7 -16,-31 -25,-66 -25,-101 0,-37 9,-71 25,-101 4,-7 14,-8 19,-6 z m 40,40 c 8,3 11,11 8,18 -6,16 -9,32 -9,49 0,17 3,34 9,49 3,7 0,19 -13,20 -6,0 -11,-4 -13,-9 -7,-19 -11,-39 -11,-59 0,-21 4,-41 11,-59 3,-8 13,-11 18,-9 z m 308,-40 c 0,0 -11,6 -5,18 14,27 22,58 22,88 0,32 -8,62 -22,89 -4,10 3,17 9,19 C 441,364 447,361 449,357 c 16,-31 25,-66 25,-101 0,-37 -9,-71 -25,-101 -3,-7 -11,-10 -19,-6 z m -40,40 c -8,3 -11,13 -8,18 6,16 9,32 9,49 0,17 -3,34 -9,49 -3,8 1,20 13,20 6,0 11,-4 13,-9 7,-19 11,-39 11,-59 0,-21 -4,-41 -11,-59 -3,-8 -11,-11 -18,-9 z"/>
+              </symbol>
+              <symbol id="icon-telegram" aria-label="Telegram" role="img" viewBox="0 0 512 512">
+                <rect width="512" height="512" rx="15%" fill="#37aee2"/>
+                <path fill="#c8daea" d="M199 404c-11 0-10-4-13-14l-32-105 245-144"/>
+                <path fill="#a9c9dd" d="M199 404c7 0 11-4 16-8l45-43-56-34"/>
+                <path fill="#f6fbfe" d="M204 319l135 99c14 9 26 4 30-14l55-258c5-22-9-32-24-25L79 245c-21 8-21 21-4 26l83 26 190-121c9-5 17-3 11 4"/>
+              </symbol>
+              <symbol id="icon-whatsapp" aria-label="WhatsApp" role="img" viewBox="0 0 512 512">
+                <rect width="512" height="512" rx="15%" fill="#25d366"/>
+                <path fill="#25d366" stroke="#ffffff" stroke-width="26" d="M123 393l14-65a138 138 0 1150 47z"/>
+                <path fill="#ffffff" d="M308 273c-3-2-6-3-9 1l-12 16c-3 2-5 3-9 1-15-8-36-17-54-47-1-4 1-6 3-8l9-14c2-2 1-4 0-6l-12-29c-3-8-6-7-9-7h-8c-2 0-6 1-10 5-22 22-13 53 3 73 3 4 23 40 66 59 32 14 39 12 48 10 11-1 22-10 27-19 1-3 6-16 2-18"/>
+              </symbol>
+              <symbol id="icon-vk" aria-label="VK" role="img" viewBox="0 0 512 512">
+                <rect width="512" height="512" rx="15%" fill="#5281b8"/>
+                <path fill="#ffffff" d="M274 363c5-1 14-3 14-15 0 0-1-30 13-34s32 29 51 42c14 9 25 8 25 8l51-1s26-2 14-23c-1-2-9-15-39-42-31-30-26-25 11-76 23-31 33-50 30-57-4-7-20-6-20-6h-57c-6 0-9 1-12 6 0 0-9 25-21 45-25 43-35 45-40 42-9-5-7-24-7-37 0-45 7-61-13-65-13-2-59-4-73 3-7 4-11 11-8 12 3 0 12 1 17 7 8 13 9 75-2 81-15 11-53-62-62-86-2-6-5-7-12-9H79c-6 0-15 1-11 13 27 56 83 193 184 192z"/>
+              </symbol>
+            </svg>
+            <div class="icons-container">
+                <a href="tel:+79028016576" class="icon-link">
+                    <svg aria-label="Phone Icon" role="img"><use href="#icon-phone"></use></svg>
+                </a>
+                <a href="#" class="icon-link">
+                    <svg aria-label="Telegram Icon" role="img"><use href="#icon-telegram"></use></svg>
+                </a>
+                <a href="#" class="icon-link">
+                    <svg aria-label="WhatsApp Icon" role="img"><use href="#icon-whatsapp"></use></svg>
+                </a>
+                <a href="#" class="icon-link">
+                    <svg aria-label="VK Icon" role="img"><use href="#icon-vk"></use></svg>
+                </a>
+            </div>
+            <div class="contact-block">
+                 <p><a href="tel:+79028016576">+7 (342) 277-65-76</a></p>
+                 <p><a href="mailto:info@zavodsvay.ru">info@zavodsvay.ru</a></p>
+                 <p>г. Пермь, ул.&nbsp;Монастырская,&nbsp;14, оф.&nbsp;502</p>
+            </div>
+            <div class="sidebar-menu-title">Статьи о сваях</div>
+            <div class="sidebar-menu-list">
+                 <ul>
+                     <li><a href="1.html">Технология строительства фундамента на винтовых сваях</a></li>
+                     <li><a href="2.html">Размещение винтовых свай в фундаменте</a></li>
+                     <li><a href="3.html">Несущая способность винтовых свай в разных типах грунтов</a></li>
+                     <li><a href="4.html">Преимущества фундамента на винтовых сваях</a></li>
+                     <li><a href="5.html">Испытания винтовых свай</a></li>
+                     <li><a href="6.html">Расчет диаметра лопасти винтовой сваи при проектировании свайного поля</a></li>
+                     <li><a href="7.html">Виды винтовых свай</a></li>
+                     <li><a href="8.html">Ручной монтаж фундамента на винтовых сваях</a></li>
+                     <li><a href="9.html">Машинный монтаж фундамента на винтовых сваях</a></li>
+                     <li><a href="10.html">Сравнение винтовых свай со сварной и литой лопастью</a></li>
+                     <li><a href="11.html">Типичные ошибки при заказе фундамента на винтовых сваях</a></li>
+                 </ul>
+            </div>
+        </aside>
+        <main class="content-area">
+            <h1>Технология строительства фундамента на винтовых сваях</h1>
+            <p>Сделав свой выбор в пользу свайно-винтового фундамента, или ещё определяясь в его целесообразности, у застройщика, возникают многочисленные вопросы о технологии монтажа фундамента на винтовых сваях. Наше предприятие производит полный цикл работ по возведению фундамента - от изготовления винтовых свай, до обвязки их ростверком. Обо всех этапах работ подробный рассказ в этой статье.</p>
+            <p><strong>Первый этап – предпроектный.</strong> На данной стадии инженеры завода «Гефест» изучают проектную документацию заказчика на планируемый объект постройки. При этом производится расчет веса дома с учетом его материалов, снеговой, ветровой и прочих нагрузок. Далее составляется предварительная схема расстановки винтовых свай в фундаменте исходя из усредненных данных расчетного сопротивления грунта в размере 3 кг/см2.
+</p>
+            <p><strong>Второй этап – технический выезд</strong> специалистов монтажного подразделения на место монтажа. Данное мероприятие является неотъемлемым звеном в технологической цепочке производства любого типа фундамента, в т.ч. и винтового.
+</p>
+            <p>Имея предварительную схему расстановки винтовых свай, составленную на первом этапе,  наши специалисты совместно с застройщиком производят привязку проекта к местности. При этом застройщик указывает расположение свайного поля на участке монтажа путем установки как минимум 2-х колышков на одной осевой линии периметра винтового фундамента с обязательным указанием нулевой отметки. Далее на застраиваемом участке специалистами производится предварительная разметка фундамента колышками и определяется разность высот грунта лазерным нивелиром. Следующее мероприятие в ходе работ - это инженерно-геологические изыскания с выбуриванием отверстий глубиной 2 м в двух местах, противоположно расположенных по диагонали фундамента, с экспресс анализом типов залегающих грунтов. При выемке грунта ведется учет пластов по толщине и составу, степени увлажненности, а также о наличии поверхностных грунтовых вод. Также, важной задачей выездной бригады, является определения мест расстановки специальной техники (ямобура) на месте проведения работ, наличия подъездных путей и степени стесненности условий для определения оптимального варианта монтажа и исключения непредвиденных ситуаций. 
+</p>
+            <p>Все данные относительно перепада высот, состава грунтов на участке, а также рекомендации по подготовке участка к монтажу и проезду техники заносятся в карту технического выезда и подписываются заказчиком.
+</p>
+            <p><strong>Третий этап – проектный.</strong> На основании данных, полученных на техническом выезде, предварительный проект пересчитывается. При этом уточняется количество винтовых свай, тип их заострения, требуется усиление лопасти или нет (например, из-за плитняка, часто встречаемого в районе п. Полазна), длина. Также определяется тип оголовка – круглый, квадратный, съемный или приварной. При обвязке ростверка швеллером или железобетоном – оголовок не требуется. Далее проект согласовывается с заказчиком, подписывается договор подряда и заказ-наряд отправляется на завод в производство.
+</p>
+            <p><strong>Четвертый этап – изготовление винтовых свай.</strong> Имея собственные производственные мощности и запас в 80 тонн стальных труб на складе, завод винтовых свай «Гефест» производит до 100 винтовых свай различных размеров в смену. Поэтому в зависимости от загруженности производства срок изготовления может составить от нескольких часов до 2-3х дней.
+</p>
+            <p><strong>Пятый этап – монтаж.</strong> В согласованные сроки монтажная бригада выезжает на место установки винтового фундамента. Как правило, работы выполняются в течение одной рабочей смены. При этом допустимые отклонения свайно-винтового фундамента по линейным размерам, в т.ч. диагонали составляют 50 мм, отклонение винтовой сваи от вертикальной оси не более 2 градусов, расхождение плоскости фундамента в пределах 5 мм. По окончании работ подписывается двухсторонний Акт.
+</p>
+
+        </main>
+    </div>
+    <footer>
+        <div class="footer-content-wrapper">
+            <p>&copy; 2008–2025. Завод&nbsp;винтовых&nbsp;свай&nbsp;“Гефест”.</p>
+            <div class="footer-info">
+                <div class="icons-container">
+                    <a href="#" class="icon-link">
+                        <svg aria-label="Phone Icon" role="img"><use href="#icon-phone"></use></svg>
+                    </a>
+                    <a href="#" class="icon-link">
+                        <svg aria-label="Telegram Icon" role="img"><use href="#icon-telegram"></use></svg>
+                    </a>
+                    <a href="#" class="icon-link">
+                        <svg aria-label="WhatsApp Icon" role="img"><use href="#icon-whatsapp"></use></svg>
+                    </a>
+                    <a href="#" class="icon-link">
+                        <svg aria-label="VK Icon" role="img"><use href="#icon-vk"></use></svg>
+                    </a>
+                </div>                
+            </div>
+            <div class="footer-info">
+                <p><a href="tel:+79028016576">+7 (342) 277-65-76</a><br><a href="mailto:info@zavodsvay.ru">info@zavodsvay.ru</a><br>г. Пермь, ул.&nbsp;Монастырская,&nbsp;14, оф.&nbsp;502</p>
+            </div>
+        </div>
+    </footer>
+    <button id="back-to-top" aria-label="Вернуться наверх">↑</button>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const splashScreen = document.getElementById('splash-screen');
+            const body = document.body;
+            const autoHideDelay = 10000;
+            let autoHideTimer;
+            const hideSplash = () => {
+                if (splashScreen && !splashScreen.classList.contains('hidden')) {
+                    splashScreen.classList.add('hidden');
+                    clearTimeout(autoHideTimer);
+                    document.removeEventListener('click', hideSplash, { once: true });
+                    document.removeEventListener('keydown', hideSplash, { once: true });
+                    window.removeEventListener('scroll', hideSplash, { once: true });
+                    splashScreen.addEventListener('transitionend', () => {
+                        splashScreen.style.display = 'none';
+                        body.style.overflowY = 'auto';
+                    }, { once: true });
+                }
+            };
+            if (splashScreen) {
+                 autoHideTimer = setTimeout(hideSplash, autoHideDelay);
+                 document.addEventListener('click', hideSplash, { once: true });
+                 document.addEventListener('keydown', hideSplash, { once: true });
+                 window.addEventListener('scroll', hideSplash, { once: true });
+                 body.style.overflowY = 'hidden';
+            } else {
+                 body.style.overflowY = 'auto';
+            }
+        });
+    </script>
+    <script src="template.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завод винтовых свай «Гефест»</title>
+    <style>
+        /* Определение локального шрифта с поддержкой кириллицы */
+        @font-face {
+            font-family: 'RobotoSlabLocal';
+            src: url('fonts/RobotoSlabCyr.woff2') format('woff2'),
+                 url('fonts/RobotoSlab.woff2') format('woff2'); /* Фолбэк для латиницы */
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap; /* Невидимый текст во время загрузки шрифта */
+        }
+
+         @font-face {
+            font-family: 'RobotoSlabLocal';
+            src: url('fonts/RobotoSlabCyr.woff2') format('woff2'),
+                 url('fonts/RobotoSlab.woff2') format('woff2'); /* Фолбэк для латиницы */
+            font-weight: 800;
+            font-style: normal;
+            font-display: swap; /* Невидимый текст во время загрузки шрифта */
+        }
+
+
+        body {
+            margin: 0;
+            overflow: hidden; /* Убираем скроллбар */
+            font-family: 'RobotoSlabLocal', serif; /* Используем локальный шрифт */
+            color: white;
+            /* Тень для текста, можно настроить под фон */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            min-height: 100vh; /* Гарантируем минимальную высоту body */
+            position: relative;
+            display: flex; /* Используем flexbox для центрирования содержимого */
+            justify-content: center; /* Центрируем по горизонтали */
+            align-items: center; /* Центрируем по вертикали */
+            flex-direction: column; /* Элементы внутри будут располагаться в колонку */
+            text-align: center; /* Выравнивание текста по центру */
+            padding: 20px; /* Добавляем небольшой padding для предотвращения прилипания к краям на узких экранах */
+            box-sizing: border-box; /* Учитываем padding в общей ширине/высоте */
+        }
+
+        /* Стили для контейнера picture и самого изображения */
+        .background-picture,
+        .background-picture img {
+            position: fixed; /* Фиксируем на фоне */
+            top: 0;
+            left: 0;
+            width: 100vw; /* Ширина = 100% viewport */
+            height: 100vh; /* Высота = 100% viewport */
+            object-fit: cover; /* Растягиваем, сохраняя пропорции, обрезая */
+            z-index: -1; /* Помещаем под остальной контент */
+            /* Убедимся, что изображение не размывается на экранах с разной плотностью пикселей */
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
+        }
+
+        .logo {
+            max-width: 15vw; /* Уменьшаем максимальную ширину логотипа */
+            height: auto; /* Высота авто, чтобы сохранить пропорции */
+            margin-bottom: 2vh; /* Отступ снизу в зависимости от высоты вьюпорта */
+            z-index: 1; /* Над фоном */
+        }
+
+        .company-name-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Центрируем текст внутри контейнера */
+            margin-bottom: 1vh; /* Добавляем небольшой отступ снизу */
+            z-index: 1; /* Над фоном */
+            line-height: 1.2; /* Межстрочный интервал для всего блока имени */
+        }
+
+        .company-name-part1 {
+            font-family: 'RobotoSlabLocal', serif; /* Применяем локальный шрифт */
+            font-size: 3.5vw; /* Размер шрифта первой части (меньше) */
+            font-weight: 800; /* Начертание Bold */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Тень */
+            margin: 0; /* Убираем стандартные отступы */
+            word-break: break-word; /* Разрешаем перенос слов */
+            overflow-wrap: break-word; /* Также для переноса длинных слов */
+            white-space: normal; /* Разрешаем нормальный перенос */
+        }
+
+        .company-name-part2 {
+            font-family: 'RobotoSlabLocal', serif; /* Применяем локальный шрифт */
+            font-size: 8vw; /* Размер шрифта второй части (больше) */
+            font-weight: 800; /* Начертание Bold */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Тень */
+            margin: 0; /* Убираем стандартные отступы */
+            margin-top: 0.5vh; /* Небольшой отступ между строками */
+            word-break: break-word; /* Разрешаем перенос слов */
+            overflow-wrap: break-word; /* Также для переноса длинных слов */
+            white-space: normal; /* Разрешаем нормальный перенос */
+        }
+
+
+        .slogan {
+            font-family: 'RobotoSlabLocal', serif; /* Применяем локальный шрифт */
+            font-size: 4vw; /* Увеличиваем размер шрифта слогана */
+            font-weight: 400; /* Начертание Regular (тоньше) */
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.6); /* Тень для слогана */
+            margin-top: 3vh; /* Увеличиваем отступ сверху */
+            z-index: 1; /* Над фоном */
+            line-height: 1.4; /* Межстрочный интервал для слогана */
+            word-break: break-word; /* Разрешаем перенос слов */
+            overflow-wrap: break-word; /* Также для переноса длинных слов */
+            white-space: normal; /* Разрешаем нормальный перенос */
+            padding: 0 10px; /* Добавляем небольшой горизонтальный padding */
+            text-wrap: balance; /* Добавляем сбалансированный перенос слов */
+            -webkit-text-wrap: balance; /* Префикс для поддержки в Chromium */
+        }
+
+
+        /* Медиа-запросы для адаптивности размера логотипа и текста */
+        @media (min-width: 1200px) {
+            .logo {
+                max-width: 200px; /* Уменьшаем фиксированный максимальный размер логотипа */
+            }
+            .company-name-part1 {
+                font-size: 42px; /* Фиксированный максимальный размер шрифта */
+            }
+            .company-name-part2 {
+                font-size: 96px; /* Фиксированный максимальный размер шрифта */
+            }
+            .slogan {
+                font-size: 48px; /* Увеличиваем фиксированный максимальный размер шрифта слогана */
+                margin-top: 30px; /* Увеличиваем фиксированный отступ сверху */
+            }
+        }
+         /* Небольшая коррекция размера шрифта для очень маленьких экранов */
+         @media (max-width: 480px) {
+             .logo {
+                max-width: 40vw; /* Чуть больше на маленьких экранах */
+            }
+            .company-name-part1 {
+                font-size: 5vw; /* Корректируем размер на маленьких экранах */
+            }
+            .company-name-part2 {
+                font-size: 10vw; /* Корректируем размер на маленьких экранах */
+            }
+            .slogan {
+                font-size: 6vw; /* Чуть больше на маленьких экранах для читаемости */
+                 margin-top: 2vh; /* Корректируем отступ сверху на маленьких экранах */
+            }
+         }
+
+
+    </style>
+</head>
+<body>
+
+    <picture class="background-picture">
+        <!-- Источники для широких экранов (>= 1201px) - 16:9 изображения WebP -->
+        <source
+            media="(min-width: 1201px)"
+            srcset="img/start-1600.webp 1600w,
+                    img/start-1920.webp 1920w"
+            sizes="100vw"
+            type="image/webp">
+
+        <!-- Источники для узких экранов (<= 1200px) - квадратные (1:1) изображения WebP -->
+        <source
+            srcset="img/start-480.webp 480w,
+                    img/start-600.webp 600w,
+                    img/start-800.webp 800w,
+                    img/start-1200.webp 1200w"
+            sizes="100vw"
+            type="image/webp">
+
+        <!-- Тег img как окончательный фолбэк (для очень старых браузеров) -->
+        <img
+            src="img/start-fallback.jpg"
+            alt="Фоновая картинка"
+            sizes="100vw">
+    </picture>
+
+    <!-- Элементы размещены напрямую в body для центрирования через flexbox -->
+    <img src="img/logocircletrans360.webp" alt="Логотип Завода винтовых свай Гефест" class="logo">
+
+    <div class="company-name-container">
+        <p class="company-name-part1">Завод винтовых свай</p>
+        <p class="company-name-part2">«Гефест»</p>
+    </div>
+
+    <p class="slogan">Вертим ваш проект на наших сваях</p>
+
+</body>
+</html>
+

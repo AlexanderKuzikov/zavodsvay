@@ -1,6 +1,6 @@
 <?php
 /**
- * Layout для главной страницы (с splash screen)
+ * Layout для главной страницы
  */
 if (!isset($title)) $title = '';
 if (!isset($meta_description)) $meta_description = '';
@@ -14,7 +14,7 @@ if (!isset($content)) $content = '';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($title) ?></title>
     <link rel="stylesheet" href="/assets/css/template.css">
-    <link rel="stylesheet" href="/assets/css/splash.css">
+    <!-- <link rel="stylesheet" href="/assets/css/splash.css"> -->
     <?php if (!empty($canonical)): ?>
     <link rel="canonical" href="<?= htmlspecialchars($canonical) ?>">
     <?php endif; ?>
@@ -24,7 +24,7 @@ if (!isset($content)) $content = '';
 </head>
 <body>
 
-<?php include __DIR__ . '/../partials/splash.php'; ?>
+<!-- <?php include __DIR__ . '/../partials/splash.php'; ?> -->
 <?php include __DIR__ . '/../partials/components/icons-svg.php'; ?>
 <?php include __DIR__ . '/../partials/header.php'; ?>
 
